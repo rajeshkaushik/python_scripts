@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 boto3 = "*"
 ipython = "*"
+cassandra-driver = "*"
+faker = "==13.12.0"
+numpy = "*"
+ipdb = "*"
 
 [dev-packages]
 
