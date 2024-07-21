@@ -308,7 +308,7 @@ for fileno in range(50):
         # print('\n\n\n\n')
         text += '\n\n\n\n'
 
-        file_name = f"bills/book/{bill_date.date()}.pdf"
+        file_name = f"bills/books/{bill_date.date()}.pdf"
 
         text_to_pdf(text, file_name)
     except Exception as excep:
