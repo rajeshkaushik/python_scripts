@@ -53,7 +53,7 @@ books = {
     "product10_price": 3140,
     "product11_name": 'Serverless Architectures on AWS',
     "product11_price": 3520,
-    "product12_name": 'Professional Cloud Architect – Google Cloud Certification Guide',
+    "product12_name": 'Professional Cloud Architect - Google Cloud Certification Guide',
     "product12_price": 2720,
     "product13_name": "The Professional Cloud Architect's Big Fact Sheet",
     "product13_price": 3200,
@@ -163,36 +163,36 @@ books = {
     "product65_price": 2400,
     "product66_name": 'Generative AI with Python and TensorFlow 2',
     "product66_price": 2780,
-    # "product67_name": 'Books',
-    # "product67_price": 50.95,
-    # "product68_name": 'Books',
-    # "product68_price": 50.95,
-    # "product69_name": 'Books',
-    # "product69_price": 50.95,
-    # "product70_name": 'Books',
-    # "product70_price": 50.95,
-    # "product71_name": 'Books',
-    # "product71_price": 50.95,
-    # "product72_name": 'Books',
-    # "product72_price": 50.95,
-    # "product73_name": 'Books',
-    # "product73_price": 50.95,
-    # "product74_name": 'Books',
-    # "product74_price": 50.95,
-    # "product75_name": 'Books',
-    # "product75_price": 50.95,
-    # "product76_name": 'Books',
-    # "product76_price": 50.95,
-    # "product77_name": 'Books',
-    # "product77_price": 50.95,
-    # "product78_name": 'Books',
-    # "product78_price": 50.95,
-    # "product79_name": 'Books',
-    # "product79_price": 50.95,
-    # "product80_name": 'Books',
-    # "product80_price": 50.95,
-    # "product81_name": 'Books',
-    # "product81_price": 50.95,
+    "product67_name": 'Technology Trends in Practice: Grow Your Businessby Using 30 New Technology Trends for Success',
+    "product67_price": 2450,
+    "product68_name": 'The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology',
+    "product68_price": 1750,
+    "product69_name": 'Generative AI on AWS: Building Context-Aware Multimodal Reasoning Applications',
+    "product69_price": 2250,
+    "product70_name": 'Generative AI For Business Leaders',
+    "product70_price": 3350,
+    "product71_name": 'Deciphering Data Architectures: Choosing Between a Modern Data Warehouse, Data Fabric, Data Lakehouse, and Data Mesh',
+    "product71_price": 1400,
+    "product72_name": 'Data Management at Scale: Modern Data Architecture with Data Mesh and Data Fabric',
+    "product72_price": 1950,
+    "product73_name": 'Data Engineering with dbt: A practical guide to building a cloud-based, pragmatic, and dependable data platform with SQL',
+    "product73_price": 2550,
+    "product74_name": 'Data Governance Handbook: A practical approach to building trust in data',
+    "product74_price": 3650,
+    "product75_name": 'DAMA-DMBOK (2ND EDITION) 2/E',
+    "product75_price": 2490,
+    "product76_name": 'Mastering NLP from Foundations to LLMs: Apply advanced rule-based techniques to LLMs and solve real-world business problems',
+    "product76_price": 3750,
+    "product77_name": 'Prompt Engineering for Generative AI',
+    "product77_price": 1780,
+    "product78_name": 'Knowledge Graphs: Fundamentals, Techniques, and Applications',
+    "product78_price": 2500,
+    "product79_name": 'The Five Dysfunctions of a Team: A Leadership Fable',
+    "product79_price": 2300,
+    "product80_name": 'Inspired: How to Create Tech Products Customers Love',
+    "product80_price": 1770,
+    "product81_name": 'Servant Leadership in Action: How You Can Achieve Great Relationships and Results',
+    "product81_price": 2440,
     # "product82_name": 'Books',
     # "product82_price": 50.95,
     # "product83_name": 'Books',
@@ -213,7 +213,7 @@ books = {
     # "product90_price": 50.95,
     }
 
-productid_set = set(range(1,67))
+productid_set = set(range(1,81))
 
 # create a company name and information
 company_name = 'Vishakha Books.'
@@ -223,92 +223,95 @@ company_city = 'Noida, Uttar Pradesh - 201309'
 # declare ending message
 message = 'Thanks for shopping with us today!'
 
-for fileno in range(30):
+for fileno in range(50):
+    try:
+        if len(productid_set) < 3:
+            break
+        bill_date = datetime.datetime.now() + datetime.timedelta(days=random.randint(-20, 160))
 
-    bill_date = datetime.datetime.now() + datetime.timedelta(days=random.randint(-20, 160))
+        # create a top border
+        # print('*' * 85)
+        text = u''
+        text = '*' * 85
 
-    if len(productid_set) < 3:
-        break
+        # print(f'\n\tBill Date: {bill_date.date()}')
+        text += f'\n\n\tBill Date: {bill_date.date()}'
+        # print(f'\tBill No: {random.randint(100, 999)}')
+        text += f'\n\tBill No: {random.randint(100, 999)}\n'
 
-    random_set = random.sample(productid_set, 3)
+        # print company information first using format
+        # print('\n\n\t\t\t{}'.format(company_name.title()))
+        text += '\n\t\t\t{}'.format(company_name.title())
+        # print('\t\t\t{}'.format(company_address.title()))
+        text += '\n\t\t\t{}'.format(company_address.title())
+        # print('\t\t\t{}\n'.format(company_city.title()))
+        text += '\n\t\t\t{}\n\n\n'.format(company_city.title())
 
-    if books[f"product{random_set[0]}_price"] + books[f"product{random_set[1]}_price"] + books[f"product{random_set[2]}_price"] > 9500:
-        continue
+        # print a line between sections
+        # print('=' * 85)
+        text += '=' * 85
 
-    # create a top border
-    print('*' * 85)
-    text = u''
-    text = '*' * 85
+        # print out header for section of items
+        # print('\n\tProduct Name\t\t\t\t\t\tProduct Price\n')
+        text += '\n\n\tProduct Name\t\t\t\t\t\tProduct Price\n\n'
 
-    print(f'\n\tBill Date: {bill_date.date()}')
-    text += f'\n\n\tBill Date: {bill_date.date()}'
-    print(f'\tBill No: {random.randint(100, 999)}')
-    text += f'\n\tBill No: {random.randint(100, 999)}\n'
+        total = 0
 
-    # print company information first using format
-    print('\n\n\t\t\t{}'.format(company_name.title()))
-    text += '\n\t\t\t{}'.format(company_name.title())
-    print('\t\t\t{}'.format(company_address.title()))
-    text += '\n\t\t\t{}'.format(company_address.title())
-    print('\t\t\t{}\n'.format(company_city.title()))
-    text += '\n\t\t\t{}\n\n\n'.format(company_city.title())
+        while True:
+    
+            x = random.choice(list(productid_set))
+            total += books[f"product{x}_price"]
 
-    # print a line between sections
-    print('=' * 85)
-    text += '=' * 85
+            if total < 9800:
 
-    # print out header for section of items
-    print('\n\tProduct Name\t\t\t\t\t\tProduct Price\n')
-    text += '\n\n\tProduct Name\t\t\t\t\t\tProduct Price\n\n'
+                product_name = books[f"product{x}_name"]
+                product_name = f"{product_name:<45}"
+                product_name = f"{product_name:.45}"
+                product_price = books[f"product{x}_price"]
+                # create a print statement for each item
+                # print(f"\t{product_name}\t\tRs. {product_price}\n")
+                text += f"\n\t{product_name}\t\tRs. {product_price}\n"
 
-    total = 0
+                productid_set.remove(x)
+            else:
+                total -= books[f"product{x}_price"]
+                break
 
-    for x in random_set:
+        # print a line between sections
+        # print('\n\n\n\n\n\n')
+        text += '\n\n\n\n\n\n\n\n\n\n\n\n'
+        # print('=' * 85)
+        text += '=' * 85
 
-        productid_set.remove(x)
+        # print out header for section of total
+        # print('\n\t\t\t\t\t\t\t\tTotal\n')
+        text += '\n\n\t\t\t\t\t\t\t\tTotal\n'
 
-        product_name = books[f"product{x}_name"]
-        product_name = f"{product_name:<45}"
-        product_name = f"{product_name:.45}"
-        product_price = books[f"product{x}_price"]
-        # create a print statement for each item
-        print(f"\t{product_name}\t\tRs. {product_price}\n")
-        text += f"\n\t{product_name}\t\tRs. {product_price}\n"
+        # print('\t\t\t\t\t\t\t\tRs. {}\n'.format(total))
+        text += '\n\t\t\t\t\t\t\t\tRs. {}\n\n'.format(total)
 
-        total += product_price
-
-
-    # print a line between sections
-    print('\n\n\n\n\n\n')
-    text += '\n\n\n\n\n\n\n\n\n\n\n\n'
-    print('=' * 85)
-    text += '=' * 85
-
-    # print out header for section of total
-    print('\n\t\t\t\t\t\t\t\tTotal\n')
-    text += '\n\n\t\t\t\t\t\t\t\tTotal\n'
-
-    print('\t\t\t\t\t\t\t\tRs. {}\n'.format(total))
-    text += '\n\t\t\t\t\t\t\t\tRs. {}\n\n'.format(total)
-
-    # print a line between sections
-    print('=' * 85)
-    text += '=' * 85
+        # print a line between sections
+        # print('=' * 85)
+        text += '=' * 85
 
 
-    print('\n\n\n\t\t\t\t\t\t\t\tAuthorised Signatory')
-    text += '\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\tAuthorised Signatory'
+        # print('\n\n\n\t\t\t\t\t\t\t\tAuthorised Signatory')
+        text += '\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\tAuthorised Signatory'
 
-    # output thank you message
-    print('\n\t\t\t{}\n'.format(message))
-    text += '\n\n\n\n\t\t\t{}\n\n'.format(message)
+        # output thank you message
+        # print('\n\t\t\t{}\n'.format(message))
+        text += '\n\n\n\n\t\t\t{}\n\n'.format(message)
 
-    # create a bottom border
-    print('*' * 85)
-    text += '*' * 85
-    print('\n\n\n\n')
-    text += '\n\n\n\n'
+        # create a bottom border
+        # print('*' * 85)
+        text += '*' * 85
+        # print('\n\n\n\n')
+        text += '\n\n\n\n'
 
-    file_name = f"bills/book_{fileno}.pdf"
+        file_name = f"bills/book/{bill_date.date()}.pdf"
 
-    text_to_pdf(text, file_name)
+        text_to_pdf(text, file_name)
+    except Exception as excep:
+        print(text)
+        import ipdb; ipdb.set_trace()
+        print(excep)
